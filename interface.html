@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Upload files</title>
+		<link href="https://releases.transloadit.com/uppy/v1.29.1/uppy.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Upload files</h1>
+		<div id="drag-drop-area"></div>
+		<!--<script type="module" src="static/Upload_Files.js"></script>-->
+
+		<script src="https://releases.transloadit.com/uppy/v1.29.1/uppy.min.js"></script>
+		<script>
+				var uppy = Uppy.Core()
+				.use(Uppy.Dashboard, {
+					inline: true,
+					showProgressDetails: true,
+					target: '#drag-drop-area'
+				})
+				.use(Uppy.GoogleDrive, {
+					inline: true,
+					showProgressDetails: true,
+					companionUrl: 'https://companion.uppy.io/',
+					target: Uppy.Dashboard
+				})
+				.use(Uppy.Dropbox, {
+					inline: true,
+					showProgressDetails: true,
+					companionUrl: 'https://companion.uppy.io/',
+					target: Uppy.Dashboard
+				})
+				.use(Uppy.OneDrive, {
+					inline: true,
+					showProgressDetails: true,
+					companionUrl: 'https://companion.uppy.io/',
+					target: Uppy.Dashboard
+				})
+				.use(Uppy.Url, {
+					inline: true,
+					showProgressDetails: true,
+					companionUrl: 'https://companion.uppy.io/',
+					target: Uppy.Dashboard
+				})
+				.use(Uppy.Tus, {endpoint: 'https://tusd.tusdemo.net/files/'})
+				
+			    uppy.on('complete', (result) => {
+				console.log('All your files are uploaded.', result.successful);
+			    });
+		</script>
+	</body>
+
+</html>
